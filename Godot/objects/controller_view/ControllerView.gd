@@ -2,7 +2,7 @@ extends Node3D
 
 
 @onready var mesh := $Icosphere
-@export var smooth_duration := 0.2
+@export var smooth_duration := 0.05
 var smooth_sensors := {}
 var ripple_effect_acc_min := 2.0
 

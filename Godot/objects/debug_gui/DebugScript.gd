@@ -3,7 +3,7 @@ extends Control
 @export var sliders_scene: PackedScene
 
 func _ready() -> void:
-	%port.text_set.connect(_on_text_set)
+	%send.pressed.connect(_on_text_set)
 	
 	for id in Sensor.Names.keys():
 		var scene_instace := sliders_scene.instantiate()
@@ -14,5 +14,6 @@ func _ready() -> void:
 		
 
 
-func _on_text_set(text: String):
+func _on_text_set():
+	var text = %port.text
 	SerialManager.start_serial(text)
