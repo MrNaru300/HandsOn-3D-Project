@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://ck38ghv5wcsti"]
+
+[ext_resource type="Shader" path="res://objects/controller_view/controller_view_shader.gdshader" id="1_vsw7y"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_vsw7y")
+shader_parameter/_impact_origin = Vector3(1, 1, 0)
+shader_parameter/_impact_frequency = 37.245
+shader_parameter/_impact_density = 6.055
+shader_parameter/_impact_amplitude = 0.445
+shader_parameter/_impact_blend = 2.247
+shader_parameter/_impact_radius = 6.082
+shader_parameter/_impact_anim = 0.0
+shader_parameter/_impact_duration = 10.0
