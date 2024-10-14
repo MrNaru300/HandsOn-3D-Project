@@ -34,7 +34,7 @@ func _on_data_received(data: PackedByteArray) -> void:
 	
 
 func update_sensor(sensor: Sensor):
-	print(sensor)
+	
 	sensors[sensor.id] = sensor
 	sensor_update.emit(sensor)
 

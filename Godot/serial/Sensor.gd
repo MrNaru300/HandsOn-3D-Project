@@ -33,3 +33,18 @@ static func from_str(data: String) -> Sensor:
 func get_position() -> float:
 	return (float(pressure) / 1023 + float(stretch) / 1023) - 1
 	
+func to_local_coord() -> Vector3:
+	if id == "X":
+		return Vector3(1.,0.,0.)
+	elif id == "Y":
+		return Vector3(0.,1.,0.)
+	elif id == "Z":
+		return Vector3(0.,0.,1.)
+	elif id == "NX":
+		return Vector3(-1.,0.,0.)
+	elif id == "NY":
+		return Vector3(0.,-1.,0.)
+	elif id == "NZ":
+		return Vector3(0.,0.,-1.)
+	else:
+		return Vector3.ZERO
