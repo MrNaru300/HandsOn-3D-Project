@@ -5,4 +5,7 @@ compatibility_minimum = 4.1
 [libraries]
 linux.debug.x86_64= "bin/libserialport.linux.template_debug.x86_64.so"
 linux.release.x86_64= "bin/libserialport.linux.template_release.x86_64.so"
+windows.debug.x86_64= "bin/serialport.windows.template_debug.x86_64.dll"
+windows.release.x86_64= "bin/serialport.windows.template_release.x86_64.dll"
+
 

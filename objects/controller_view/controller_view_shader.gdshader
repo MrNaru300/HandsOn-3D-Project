@@ -38,16 +38,18 @@ void vertex() {
 	
 	vec3 w_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
 	
-	float time = fract(TIME / _impact_duration) * _impact_duration;
 	
-	float impact_ripple = _ComputeRipple(w_pos, 
+	float impact_ripple = 0.0;
+	if (_impact_anim  > 0.001) {
+		impact_ripple = _ComputeRipple(w_pos, 
 		_impact_origin, 
 		_impact_blend,
 		_impact_radius, 
 		_impact_frequency, 
 		_impact_density, 
 		_impact_amplitude,
-		time);
+		_impact_anim);
+	}
 	
 	VERTEX += NORMAL * impact_ripple;
 }
