@@ -17,20 +17,21 @@ func _on_error(where, what) -> void:
 	printerr("Got error when %s: %s" % [where, what])
 
 func _on_data_received(data: PackedByteArray) -> void:
+	if len(buffer) > 8096: buffer.substr(len(data))
 	buffer += data.get_string_from_ascii()
-	var delim_pos = buffer.find(",")
-	while delim_pos != -1:
-		var sensor = Sensor.from_str(buffer.substr(0,delim_pos))
-		buffer = buffer.substr(delim_pos+1)
+
+	for line in buffer.split(",", false):
+		var sensor := Sensor.from_str(line)
 		if sensor == null: 
-			printerr("Error while parsing new sesnor packet")
-			return
-		if sensors.find_key(sensor.id) == -1:
-			printerr("Uknown sensor: ", sensor.id)
-			return
+			printerr("Error while parsing new sesnor packet: ", line)
+			continue
+		if sensors.get(sensor.id) == null:
+			printerr("Uknown sensor: ", sensor, " (", line, ")")
+			continue
 			
 		update_sensor(sensor)
-		delim_pos = buffer.find(",")
+	var pos = buffer.rfind(",")
+	buffer = buffer.substr(pos) if pos != -1 else ""
 	
 
 func update_sensor(sensor: Sensor):
@@ -42,14 +43,18 @@ func start_serial(port: String):
 	if !serial.closed: 
 		serial.close()
 	serial.open(port)
+	serial.flush_input()
 	print("Trying to connect to serial: %s" % "true" if serial.is_open() else "false")
 
 func _ready() -> void:
 	serial.got_error.connect(_on_error)
 	serial.data_received.connect(_on_data_received)
-	serial.start_monitoring(20_000)
+	serial.baudrate = baudrate
+	serial.start_monitoring(2_000)
 	
 	start_serial(port)
-	
+
+func _exit_tree() -> void:
+	serial.stop_monitoring()
 	
 	

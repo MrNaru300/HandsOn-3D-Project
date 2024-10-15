@@ -22,9 +22,10 @@ func _to_string() -> String:
 	return "Sensor: " + id + " pressure: " + str(pressure) + " stretch:" + str(stretch) + " pos:" + str(get_position())
 
 static func from_str(data: String) -> Sensor:
-	var fields = data.split(":");
+	var fields = data.split(":", false, 3);
 	if len(fields) != 3: return null
-	var sensor = Sensor.new(fields[0])
+	var _id = (fields[0] as String).replace("-", "N")
+	var sensor = Sensor.new(_id)
 	sensor.pressure = int(fields[1])
 	sensor.stretch = int(fields[2])
 	return sensor
