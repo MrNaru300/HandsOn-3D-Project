@@ -17,17 +17,16 @@ func _on_error(where, what) -> void:
 	printerr("Got error when %s: %s" % [where, what])
 
 func _on_data_received(data: PackedByteArray) -> void:
-	#if len(buffer) > 8096: buffer.substr(len(data))
-	print(buffer)
-	buffer += data.get_string_from_ascii().replace('\n', '')
+	if len(buffer) > 8096: buffer.substr(len(data))
+	buffer += data.get_string_from_ascii().replace("\n", "")
 
 	for line in buffer.split(",", false):
 		var sensor := Sensor.from_str(line)
 		if sensor == null: 
-			printerr("Error while parsing new sesnor packet: ", line)
+			printerr("Error while parsing new sesnor packet: ", line.c_escape())
 			continue
 		if sensors.get(sensor.id) == null:
-			printerr("Uknown sensor: ", sensor, " from: (", line, ")")
+			printerr("Uknown sensor: ", sensor, " from: (", line.c_escape(), ")")
 			continue
 			
 		update_sensor(sensor)

@@ -18,7 +18,7 @@ float _GetRippleOrigin(vec3 vert, vec3 orig) {
 }
 
 float _FadeRipple(float orig, float blend, float radius) {
-	// create a radius 
+	// create a radius
 	float b = clamp(blend, 0.0, radius);
 	return smoothstep(b, -radius, orig);
 }
@@ -33,32 +33,30 @@ float _ComputeRipple(vec3 vert, vec3 orig, float blend, float radius, float freq
 
 
 void vertex() {
-	
+
 	// Local to World conversion to add impact ripple
-	
+
 	vec3 w_pos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
-	
-	
+
+
 	float impact_ripple = 0.0;
 	if (_impact_anim  > 0.001) {
-		impact_ripple = _ComputeRipple(w_pos, 
-		_impact_origin, 
+		impact_ripple = _ComputeRipple(w_pos,
+		_impact_origin,
 		_impact_blend,
-		_impact_radius, 
-		_impact_frequency, 
-		_impact_density, 
+		_impact_radius,
+		_impact_frequency,
+		_impact_density,
 		_impact_amplitude,
 		_impact_anim);
 	}
-	
+
 	VERTEX += NORMAL * impact_ripple;
 }
 
 void fragment() {
 	ALPHA = 0.8;
 	METALLIC = 0.5;
-	
+
 	ALBEDO = vec3(0.1,0.9,0.1);
 }
-
-
