@@ -1,6 +1,6 @@
 extends Node
 
-@export var port := "/dev/pts/0"
+@export var port := "/dev/ttyACM0"
 @export var baudrate := 9600
 var serial := SerialPort.new()
 var buffer = ""
@@ -17,8 +17,9 @@ func _on_error(where, what) -> void:
 	printerr("Got error when %s: %s" % [where, what])
 
 func _on_data_received(data: PackedByteArray) -> void:
-	if len(buffer) > 8096: buffer.substr(len(data))
-	buffer += data.get_string_from_ascii()
+	#if len(buffer) > 8096: buffer.substr(len(data))
+	print(buffer)
+	buffer += data.get_string_from_ascii().replace('\n', '')
 
 	for line in buffer.split(",", false):
 		var sensor := Sensor.from_str(line)
@@ -26,7 +27,7 @@ func _on_data_received(data: PackedByteArray) -> void:
 			printerr("Error while parsing new sesnor packet: ", line)
 			continue
 		if sensors.get(sensor.id) == null:
-			printerr("Uknown sensor: ", sensor, " (", line, ")")
+			printerr("Uknown sensor: ", sensor, " from: (", line, ")")
 			continue
 			
 		update_sensor(sensor)

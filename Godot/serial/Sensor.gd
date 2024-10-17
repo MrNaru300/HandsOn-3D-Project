@@ -13,6 +13,12 @@ enum Names {
 	NY,
 	Z,
 	NZ,
+	PX,
+	PNX,
+	PY,
+	PNY,
+	PZ,
+	PNZ,
 }
 
 func _init(_id: String) -> void:

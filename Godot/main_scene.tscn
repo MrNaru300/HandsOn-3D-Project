@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdgjv5edltvnf"]
+[gd_scene load_steps=5 format=3 uid="uid://cdgjv5edltvnf"]
 
 [ext_resource type="PackedScene" uid="uid://hcak1bbj1gu2" path="res://objects/debug_gui/control.tscn" id="1_0uv0o"]
 [ext_resource type="PackedScene" uid="uid://c6l6q3mksprjo" path="res://objects/controller_view/controller_view.tscn" id="1_62j80"]
+[ext_resource type="PackedScene" uid="uid://sy7rll8f1rwp" path="res://objects/controller_view/slime.tscn" id="3_wsd0w"]
+
+[sub_resource type="Environment" id="Environment_jx6um"]
+ambient_light_color = Color(0.0375193, 0.275378, 1, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -11,8 +15,16 @@
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.68032, 0.58655, 4.2101)
 current = true
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.22296)
-
 [node name="controller_view" parent="." instance=ExtResource("1_62j80")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+visible = false
+
+[node name="Slime_original" parent="." instance=ExtResource("3_wsd0w")]
+transform = Transform3D(0.981163, 0, 0, 0, 0.981163, 0, 0, 0, 0.981163, 0.0939775, 0, -0.0132)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jx6um")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.0196415, 0.881288, 0.472171, -0.0116725, -0.472028, 0.881506, 0.999739, -0.0228255, 0.00101537, 5.1644, -0.596547, -1.37242)
+light_angular_distance = 30.66

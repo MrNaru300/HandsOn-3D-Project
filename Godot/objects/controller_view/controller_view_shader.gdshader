@@ -53,3 +53,12 @@ void vertex() {
 	
 	VERTEX += NORMAL * impact_ripple;
 }
+
+void fragment() {
+	ALPHA = 0.8;
+	METALLIC = 0.5;
+	
+	ALBEDO = vec3(0.1,0.9,0.1);
+}
+
+
