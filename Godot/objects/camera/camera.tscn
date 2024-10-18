@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgda4vxk81dvx"]
+
+[ext_resource type="Script" path="res://objects/camera/camera.gd" id="1_po87u"]
+
+[node name="Camera3D" type="Camera3D"]
+transform = Transform3D(0.72978, -0.367342, 0.576611, 1.3505e-08, 0.843391, 0.5373, -0.683681, -0.392111, 0.615491, 1.98192, 2.25879, 2.15362)
+current = true
+script = ExtResource("1_po87u")
