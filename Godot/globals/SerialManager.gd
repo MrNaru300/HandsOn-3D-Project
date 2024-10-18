@@ -16,20 +16,32 @@ func _init() -> void:
 func _on_error(where, what) -> void:
 	printerr("Got error when %s: %s" % [where, what])
 
+func sensor_from_str(data: String) -> Array:
+	var fields = data.split(":", false, 3);
+	if len(fields) != 3: return []
+	var _id = (fields[0] as String).replace("-", "N")
+	var sensor1 = Sensor.new("P"+_id,  float(fields[1])/1023)
+	var sensor2 = Sensor.new("S"+_id,  float(fields[2])/1023)
+	return [sensor1, sensor2]
+
 func _on_data_received(data: PackedByteArray) -> void:
 	if len(buffer) > 8096: buffer.substr(len(data))
 	buffer += data.get_string_from_ascii().replace("\n", "")
 
 	for line in buffer.split(",", false):
-		var sensor := Sensor.from_str(line)
-		if sensor == null: 
+		var sens := sensor_from_str(line)
+		
+		if len(sens) != 2: 
 			printerr("Error while parsing new sesnor packet: ", line.c_escape())
 			continue
-		if sensors.get(sensor.id) == null:
-			printerr("Uknown sensor: ", sensor, " from: (", line.c_escape(), ")")
-			continue
+		for sensor in sens:
+			if sensors.get(sensor.id) == null:
+				printerr("Uknown sensor: ", sensor, " from: (", line.c_escape(), ")")
+				continue
 			
-		update_sensor(sensor)
+			update_sensor(sensor)
+			
+	
 	var pos = buffer.rfind(",")
 	buffer = buffer.substr(pos) if pos != -1 else ""
 	

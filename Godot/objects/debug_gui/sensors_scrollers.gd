@@ -9,12 +9,10 @@ func _ready() -> void:
 	
 func _on_sensor_update(sensor: Sensor):
 	if sensor.id != id: return
-	
-	slider.set_value_no_signal((sensor.get_position() + 1) * 512)
+	slider.set_value_no_signal(sensor.value )
 	
 
 func _on_changed(value: float):
 	var sensor := Sensor.new(id)
-	sensor.pressure = value
-	sensor.stretch = value
+	sensor.value = value
 	SerialManager.update_sensor(sensor)
