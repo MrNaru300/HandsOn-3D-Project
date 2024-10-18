@@ -1,10 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://cdgjv5edltvnf"]
+[gd_scene load_steps=6 format=3 uid="uid://cdgjv5edltvnf"]
 
 [ext_resource type="PackedScene" uid="uid://hcak1bbj1gu2" path="res://objects/debug_gui/control.tscn" id="1_0uv0o"]
 [ext_resource type="PackedScene" uid="uid://c6l6q3mksprjo" path="res://objects/controller_view/controller_view.tscn" id="1_62j80"]
 [ext_resource type="PackedScene" uid="uid://sy7rll8f1rwp" path="res://objects/controller_view/slime.tscn" id="3_wsd0w"]
+[ext_resource type="Sky" uid="uid://l8yek8237evn" path="res://environement/new_sky.tres" id="4_1jbf4"]
 
 [sub_resource type="Environment" id="Environment_jx6um"]
+background_mode = 2
+background_energy_multiplier = 1.01
+sky = ExtResource("4_1jbf4")
+ambient_light_source = 3
 ambient_light_color = Color(0.0375193, 0.275378, 1, 1)
 
 [node name="Node3D" type="Node3D"]
@@ -12,7 +17,7 @@ ambient_light_color = Color(0.0375193, 0.275378, 1, 1)
 [node name="Control" parent="." instance=ExtResource("1_0uv0o")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.68032, 0.58655, 4.2101)
+transform = Transform3D(0.72978, -0.367342, 0.576611, 1.3505e-08, 0.843391, 0.5373, -0.683681, -0.392111, 0.615491, 1.98192, 2.25879, 2.15362)
 current = true
 
 [node name="controller_view" parent="." instance=ExtResource("1_62j80")]
@@ -26,5 +31,5 @@ transform = Transform3D(0.981163, 0, 0, 0, 0.981163, 0, 0, 0, 0.981163, 0.093977
 environment = SubResource("Environment_jx6um")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.0196415, 0.881288, 0.472171, -0.0116725, -0.472028, 0.881506, 0.999739, -0.0228255, 0.00101537, 5.1644, -0.596547, -1.37242)
+transform = Transform3D(-0.986228, -0.0991048, 0.132408, 0.113334, -0.988032, 0.104633, 0.120453, 0.118198, 0.985657, 4.74536, 0.368028, -1.37242)
 light_angular_distance = 30.66

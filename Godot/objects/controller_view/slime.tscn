@@ -1,31 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://sy7rll8f1rwp"]
+[gd_scene load_steps=3 format=3 uid="uid://sy7rll8f1rwp"]
 
-[ext_resource type="PackedScene" uid="uid://c4pqxiajp4nic" path="res://objects/blob/Slime_original.glb" id="1_qrf1k"]
-[ext_resource type="Shader" path="res://objects/controller_view/controller_view_shader.gdshader" id="2_kkwca"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xnphg"]
-render_priority = 0
-shader = ExtResource("2_kkwca")
-shader_parameter/_impact_origin = Vector3(1, 0, 0)
-shader_parameter/_impact_frequency = 5.0
-shader_parameter/_impact_density = 5.0
-shader_parameter/_impact_amplitude = 0.1
-shader_parameter/_impact_blend = 0.0
-shader_parameter/_impact_radius = 1.1
-shader_parameter/_impact_anim = 0.0
-shader_parameter/_impact_duration = 5.0
+[ext_resource type="PackedScene" uid="uid://c4pqxiajp4nic" path="res://objects/slime/Slime_original.glb" id="1_qrf1k"]
+[ext_resource type="Material" uid="uid://dui51rq6ge6cn" path="res://objects/slime/SlimeMaterial.tres" id="2_sruph"]
 
 [node name="Slime_original" instance=ExtResource("1_qrf1k")]
 
-[node name="Slime_bones" parent="." index="0"]
-visible = false
-
-[node name="polySurface1" parent="." index="1"]
-visible = false
-surface_material_override/0 = SubResource("ShaderMaterial_xnphg")
-
-[node name="Slime" parent="." index="2"]
+[node name="Slime" parent="." index="0"]
 transform = Transform3D(0.348896, 0, 0, 0, 0, -0.348896, 0, 0.348896, 0, 0, 0, 0)
-
-[node name="slimeball" parent="." index="3"]
-visible = false
+material_override = ExtResource("2_sruph")
+blend_shapes/Mouth_On = 1.0

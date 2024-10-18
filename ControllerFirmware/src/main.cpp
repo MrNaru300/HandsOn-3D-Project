@@ -10,7 +10,7 @@ void setup() {
 
 void loop() {
     String data = "";
-      for (int i = 0; i <= 4; i++) {
+    for (int i = 0; i <= 4; i++) {
       data +=  Axes[i] + ":"+ String(analogRead(pin)) + ":" + String(analogRead(pin+1)) + ",";
       pin+=2;
     }

@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfq8avf6jno0p"
-path.s3tc="res://.godot/imported/Slime_Slime_Color.png-437d17150105b74d4fe6f126a2f86889.s3tc.ctex"
+uid="uid://jctn2dkvsjt7"
+path.bptc="res://.godot/imported/industrial_sunset_puresky_4k.exr-d3fd77ad81833fccb540817d259ec668.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "e76b61c780e039c309f310ae53ea776f"
-}
 
 [deps]
 
-source_file="res://objects/blob/Slime_Slime_Color.png"
-dest_files=["res://.godot/imported/Slime_Slime_Color.png-437d17150105b74d4fe6f126a2f86889.s3tc.ctex"]
+source_file="res://environement/industrial_sunset_puresky_4k.exr"
+dest_files=["res://.godot/imported/industrial_sunset_puresky_4k.exr-d3fd77ad81833fccb540817d259ec668.bptc.ctex"]
 
 [params]
 

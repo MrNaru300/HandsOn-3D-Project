@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://muixmjcxvfm"
-path.s3tc="res://.godot/imported/Slime_original_Slime_Color.png-83a903931dc731853786cef946d07e47.s3tc.ctex"
+uid="uid://dpen4sfiqiu8d"
+path.bptc="res://.godot/imported/syferfontein_0d_clear_puresky_4k.exr-b1a40f1ab0f9cba8b7fa80ac9c31c656.bptc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "e76b61c780e039c309f310ae53ea776f"
-}
 
 [deps]
 
-source_file="res://objects/blob/Slime_original_Slime_Color.png"
-dest_files=["res://.godot/imported/Slime_original_Slime_Color.png-83a903931dc731853786cef946d07e47.s3tc.ctex"]
+source_file="res://environement/syferfontein_0d_clear_puresky_4k.exr"
+dest_files=["res://.godot/imported/syferfontein_0d_clear_puresky_4k.exr-b1a40f1ab0f9cba8b7fa80ac9c31c656.bptc.ctex"]
 
 [params]
 

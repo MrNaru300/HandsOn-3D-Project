@@ -54,9 +54,22 @@ void vertex() {
 	VERTEX += NORMAL * impact_ripple;
 }
 
-void fragment() {
+/*void fragment() {
 	ALPHA = 0.8;
 	METALLIC = 0.5;
 
 	ALBEDO = vec3(0.1,0.9,0.1);
+}*/
+
+group_uniforms Color;
+uniform sampler2D matcap : source_color, hint_default_black;
+uniform float metalness : hint_range(0.0,1.0) = 1.0;
+
+uniform sampler2D albedo_texture: source_color, filter_nearest;
+
+void fragment() {
+	vec4 tex = texture(albedo_texture, UV);//texture sampling along UV:  		https://www.reddit.com/r/godot/comments/1944wmq/comment/khe5d2x/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
+	vec2 matcap_uv = (NORMAL.xy * vec2(0.5, -0.5) + vec2(0.5, 0.5));//matcap shader:		https://godotshaders.com/shader/view-matcap/
+	ALBEDO = tex.rgb;
+	ALBEDO *= mix(vec3(1.0), texture(matcap, matcap_uv).rgb, metalness);
 }
