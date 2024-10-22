@@ -1,11 +1,19 @@
-[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://dui51rq6ge6cn"]
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://dui51rq6ge6cn"]
 
 [ext_resource type="Shader" path="res://objects/controller_view/controller_view_shader.gdshader" id="1_28yg1"]
+[ext_resource type="Shader" path="res://objects/controller_view/outline.gdshader" id="1_c1g0x"]
 [ext_resource type="Texture2D" uid="uid://dfq8avf6jno0p" path="res://objects/slime/Slime_Slime_Color.png" id="2_dll31"]
 [ext_resource type="Texture2D" uid="uid://ckiv0dhmvop8j" path="res://objects/slime/slime matcap.png" id="3_1kjxk"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tm0vd"]
+render_priority = 0
+shader = ExtResource("1_c1g0x")
+shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/size = 1.03
+
 [resource]
 render_priority = 0
+next_pass = SubResource("ShaderMaterial_tm0vd")
 shader = ExtResource("1_28yg1")
 shader_parameter/_impact_origin = Vector3(1, 0, 0)
 shader_parameter/_impact_frequency = 37.245

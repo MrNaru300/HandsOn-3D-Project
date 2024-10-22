@@ -16,7 +16,7 @@ ambient_light_color = Color(0.0375193, 0.275378, 1, 1)
 
 [node name="Control" parent="." instance=ExtResource("1_0uv0o")]
 
-[node name="Slime_original" parent="." groups=["ControllerView"] instance=ExtResource("3_wsd0w")]
+[node name="Slime" parent="." groups=["ControllerView"] instance=ExtResource("3_wsd0w")]
 transform = Transform3D(0.981163, 0, 0, 0, 0.981163, 0, 0, 0, 0.981163, 0.0939775, 0, -0.0132)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
