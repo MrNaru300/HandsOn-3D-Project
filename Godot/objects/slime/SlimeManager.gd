@@ -40,7 +40,7 @@ func _process(delta: float) -> void:
 	
 func _ready() -> void:
 	SerialManager.sensor_update.connect(update_sensor)
-	
+	%AnimationPlayer.play("IddleBink");
 	#material.set_shader_parameter("_impact_frequency", _impact_frequency);
 	#material.set_shader_parameter("_impact_density", _impact_density);
 	#material.set_shader_parameter("_impact_blend", _impact_blend);
