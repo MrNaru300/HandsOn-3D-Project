@@ -8,7 +8,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tm0vd"]
 render_priority = 0
 shader = ExtResource("1_c1g0x")
-shader_parameter/color = Color(1, 1, 1, 1)
+shader_parameter/color = Color(0.103744, 0.103744, 0.103743, 1)
 shader_parameter/size = 1.03
 
 [resource]
