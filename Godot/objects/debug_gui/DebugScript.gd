@@ -2,6 +2,8 @@ extends Control
 
 @export var sliders_scene: PackedScene
 
+
+
 func _ready() -> void:
 	%send.pressed.connect(_on_text_set)
 	
@@ -11,8 +13,14 @@ func _ready() -> void:
 		var slider := scene_instace.get_node("Slider") as Slider
 		label.text = str(id)
 		%Sliders.add_child(scene_instace)
+	
+	%ResetButton.pressed.connect(_on_reset_button)
 		
 
+func _on_reset_button():
+	for child in %Sliders.get_children():
+		var slider := child.get_node("Slider") as Slider
+		slider.value = 0
 
 func _on_text_set():
 	var text = %port.text
