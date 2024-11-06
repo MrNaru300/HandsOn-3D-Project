@@ -1,14 +1,21 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdgjv5edltvnf"]
+[gd_scene load_steps=8 format=3 uid="uid://cdgjv5edltvnf"]
 
 [ext_resource type="PackedScene" uid="uid://hcak1bbj1gu2" path="res://objects/debug_gui/control.tscn" id="1_0uv0o"]
 [ext_resource type="PackedScene" uid="uid://dgda4vxk81dvx" path="res://objects/camera/camera.tscn" id="2_g4pp4"]
+[ext_resource type="Texture2D" uid="uid://cl6kk3mnwl6la" path="res://environement/lonely_road_afternoon_puresky_4k.exr" id="3_chjts"]
 [ext_resource type="PackedScene" uid="uid://sy7rll8f1rwp" path="res://objects/slime/slime.tscn" id="3_wsd0w"]
-[ext_resource type="Sky" uid="uid://l8yek8237evn" path="res://environement/new_sky.tres" id="4_1jbf4"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_koejr"]
+panorama = ExtResource("3_chjts")
+filter = false
+
+[sub_resource type="Sky" id="Sky_hvhja"]
+sky_material = SubResource("PanoramaSkyMaterial_koejr")
 
 [sub_resource type="Environment" id="Environment_jx6um"]
 background_mode = 2
 background_energy_multiplier = 1.01
-sky = ExtResource("4_1jbf4")
+sky = SubResource("Sky_hvhja")
 ambient_light_source = 3
 ambient_light_color = Color(0.0375193, 0.275378, 1, 1)
 
