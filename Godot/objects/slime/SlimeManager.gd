@@ -24,12 +24,7 @@ func _init() -> void:
 		smooth_sensors[id] = SmoothPos.new()
 
 
-func _process(delta: float) -> void:
-	#if anim_started:
-		#anim += delta
-		#material.set_shader_parameter("_impact_anim", anim)
-
-	
+func _process(delta: float) -> void:	
 	for id : String in smooth_sensors.keys():
 		var entry := smooth_sensors[id] as SmoothPos
 		var cpos = move_toward(entry.pos, entry.end, delta * smooth_speed)
@@ -40,11 +35,6 @@ func _process(delta: float) -> void:
 	
 func _ready() -> void:
 	SerialManager.sensor_update.connect(update_sensor)
-	%AnimationPlayer.play("IddleBink");
-	#material.set_shader_parameter("_impact_frequency", _impact_frequency);
-	#material.set_shader_parameter("_impact_density", _impact_density);
-	#material.set_shader_parameter("_impact_blend", _impact_blend);
-	#material.set_shader_parameter("_impact_radius", _impact_radius);
 
 func update_sensor(sensor: Sensor) -> void:
 	var sp := smooth_sensors[sensor.id] as SmoothPos
@@ -52,10 +42,3 @@ func update_sensor(sensor: Sensor) -> void:
 	var end = sensor.value
 	smooth_sensors[sensor.id].end = end
 	smooth_sensors[sensor.id].speed = speed
-	
-	#if speed > ripple_vel_min and end < 0.1 and end > -0.1 and sp.pos < 0.1:
-		#material.set_shader_parameter("_impact_origin", sensor.to_local_coord())
-		#material.set_shader_parameter("_impact_amplitude", speed)
-		#anim = 0
-		#anim_started = true
-	#

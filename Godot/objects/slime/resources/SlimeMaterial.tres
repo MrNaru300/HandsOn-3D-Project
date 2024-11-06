@@ -1,20 +1,20 @@
-[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://dui51rq6ge6cn"]
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://ck38ghv5wcsti"]
 
-[ext_resource type="Shader" path="res://objects/controller_view/controller_view_shader.gdshader" id="1_28yg1"]
-[ext_resource type="Shader" path="res://objects/controller_view/outline.gdshader" id="1_c1g0x"]
-[ext_resource type="Texture2D" uid="uid://dfq8avf6jno0p" path="res://objects/slime/Slime_Slime_Color.png" id="2_dll31"]
-[ext_resource type="Texture2D" uid="uid://ckiv0dhmvop8j" path="res://objects/slime/slime matcap.png" id="3_1kjxk"]
+[ext_resource type="Shader" path="res://objects/slime/resources/outline.gdshader" id="1_3lioi"]
+[ext_resource type="Shader" path="res://objects/slime/resources/SlimeShader.gdshader" id="2_3c1sv"]
+[ext_resource type="Texture2D" uid="uid://ckiv0dhmvop8j" path="res://objects/slime/resources/slime matcap.png" id="3_1kjxk"]
+[ext_resource type="Texture2D" uid="uid://bd556ahvkr5fk" path="res://objects/slime/imports/Slime_Color.png" id="3_mqi64"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tm0vd"]
 render_priority = 0
-shader = ExtResource("1_c1g0x")
+shader = ExtResource("1_3lioi")
 shader_parameter/color = Color(0.103744, 0.103744, 0.103743, 1)
 shader_parameter/size = 1.03
 
 [resource]
 render_priority = 0
 next_pass = SubResource("ShaderMaterial_tm0vd")
-shader = ExtResource("1_28yg1")
+shader = ExtResource("2_3c1sv")
 shader_parameter/_impact_origin = Vector3(1, 0, 0)
 shader_parameter/_impact_frequency = 37.245
 shader_parameter/_impact_density = 6.055
@@ -25,4 +25,4 @@ shader_parameter/_impact_anim = 0.0
 shader_parameter/_impact_duration = 5.0
 shader_parameter/metalness = 0.228
 shader_parameter/matcap = ExtResource("3_1kjxk")
-shader_parameter/albedo_texture = ExtResource("2_dll31")
+shader_parameter/albedo_texture = ExtResource("3_mqi64")

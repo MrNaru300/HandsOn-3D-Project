@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://sy7rll8f1rwp"]
 
-[ext_resource type="PackedScene" uid="uid://c4pqxiajp4nic" path="res://objects/slime/Slime_original.glb" id="1_qrf1k"]
-[ext_resource type="Material" uid="uid://dui51rq6ge6cn" path="res://objects/slime/SlimeMaterial.tres" id="2_sruph"]
+[ext_resource type="PackedScene" uid="uid://c4pqxiajp4nic" path="res://objects/slime/imports/Slime_original.glb" id="1_qrf1k"]
+[ext_resource type="Material" uid="uid://ck38ghv5wcsti" path="res://objects/slime/resources/SlimeMaterial.tres" id="2_sruph"]
 [ext_resource type="Script" path="res://objects/slime/SlimeManager.gd" id="2_udcq5"]
 
 [node name="Slime_original" node_paths=PackedStringArray("mesh") instance=ExtResource("1_qrf1k")]

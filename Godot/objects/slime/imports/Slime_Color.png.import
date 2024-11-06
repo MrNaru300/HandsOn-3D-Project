@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckiv0dhmvop8j"
-path.s3tc="res://.godot/imported/slime matcap.png-7557054697d53366a0c4d0d2045622ab.s3tc.ctex"
+uid="uid://bd556ahvkr5fk"
+path.s3tc="res://.godot/imported/Slime_Color.png-6a36a914d82fb7231310eb9289565798.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "e76b61c780e039c309f310ae53ea776f"
+}
 
 [deps]
 
-source_file="res://objects/slime/slime matcap.png"
-dest_files=["res://.godot/imported/slime matcap.png-7557054697d53366a0c4d0d2045622ab.s3tc.ctex"]
+source_file="res://objects/slime/imports/Slime_Color.png"
+dest_files=["res://.godot/imported/Slime_Color.png-6a36a914d82fb7231310eb9289565798.s3tc.ctex"]
 
 [params]
 
