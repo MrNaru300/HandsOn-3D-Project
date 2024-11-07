@@ -1,8 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://sy7rll8f1rwp"]
+[gd_scene load_steps=7 format=3 uid="uid://sy7rll8f1rwp"]
 
 [ext_resource type="PackedScene" uid="uid://c4pqxiajp4nic" path="res://objects/slime/imports/Slime_original.glb" id="1_qrf1k"]
 [ext_resource type="Material" uid="uid://ck38ghv5wcsti" path="res://objects/slime/resources/SlimeMaterial.tres" id="2_sruph"]
 [ext_resource type="Script" path="res://objects/slime/SlimeManager.gd" id="2_udcq5"]
+
+[sub_resource type="Animation" id="Animation_iwsl4"]
+resource_name = "Blink"
+length = 12.0
+loop_mode = 1
+tracks/0/type = "blend_shape"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:Eyes_Squint")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 1, 1, 0, 1.1, 1, 1, 1.2, 1, 0, 1.5, 1, 0, 1.6, 1, 1, 1.7, 1, 0, 1.8, 1, 1, 1.9, 1, 0, 3.4, 1, 0, 3.5, 1, 1, 3.6, 1, 0, 3.7, 1, 1, 3.8, 1, 0, 5.16667, 1, 0, 5.26667, 1, 1, 5.36667, 1, 0, 7.3704, 1, 0, 7.4704, 1, 1, 7.5704, 1, 0, 9.03863, 1, 0, 9.13863, 1, 1, 9.23863, 1, 0, 9.33863, 1, 1, 9.43863, 1, 0, 10.8333, 1, 0, 10.9333, 1, 1, 11.0333, 1, 0, 11.1333, 1, 1, 11.2333, 1, 0)
+
+[sub_resource type="Animation" id="Animation_wra4l"]
+length = 0.001
+tracks/0/type = "blend_shape"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:Eyes_Squint")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_btb53"]
+_data = {
+"Blink": SubResource("Animation_iwsl4"),
+"RESET": SubResource("Animation_wra4l")
+}
 
 [node name="Slime_original" node_paths=PackedStringArray("mesh") instance=ExtResource("1_qrf1k")]
 script = ExtResource("2_udcq5")
@@ -12,3 +40,9 @@ mesh = NodePath("Slime")
 transform = Transform3D(0.348896, 0, 0, 0, 0, -0.348896, 0, 0.348896, 0, 0, 0, 0)
 material_override = ExtResource("2_sruph")
 blend_shapes/Mouth_On = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Slime" index="0"]
+libraries = {
+"": SubResource("AnimationLibrary_btb53")
+}
+autoplay = "Blink"
