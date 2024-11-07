@@ -5,6 +5,9 @@ extends Node
 var serial := SerialPort.new()
 var buffer = ""
 
+var dead_zone := 0.05
+var precision := 0.01
+
 signal sensor_update(sensor: Sensor)
 
 var sensors = {}
@@ -20,18 +23,21 @@ func sensor_from_str(data: String) -> Array:
 	var fields = data.split(":", false, 3);
 	if len(fields) != 3: return []
 	var _id = (fields[0] as String).replace("-", "N")
-	var sensor1 = Sensor.new("P"+_id,  float(fields[1])/1023)
-	var sensor2 = Sensor.new("S"+_id,  float(fields[2])/1023)
-	return [sensor1, sensor2]
+	var pressure := float(fields[1])/1023
+	pressure = pressure if pressure > dead_zone else 0
+	#var stretch := float(fields[2])/1023
+	var sensor1 = Sensor.new("P"+_id,  pressure)
+	#var sensor2 = Sensor.new("S"+_id,  stretch)
+	return [sensor1,]
 
 func _on_data_received(data: PackedByteArray) -> void:
 	if len(buffer) > 8096: buffer.substr(len(data))
-	buffer += data.get_string_from_ascii().replace("\n", "")
+	buffer += data.get_string_from_ascii().replace("\n", "").replace("\r", "")
 
 	for line in buffer.split(",", false):
 		var sens := sensor_from_str(line)
 		
-		if len(sens) != 2: 
+		if len(sens) == 0: 
 			printerr("Error while parsing new sesnor packet: ", line.c_escape())
 			continue
 		for sensor in sens:
